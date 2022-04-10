@@ -1,4 +1,4 @@
-import { backend_server } from "../../config"
+import { backend_server } from '../config'
 
 const get_books = async()=>{
    return await fetch(backend_server + "/books",{
@@ -41,7 +41,7 @@ const delete_book = async (id) => {
 }
 
 
-export const bookStore = {
+export const bookService = {
     get_books,
     delete_book,
     addBook,

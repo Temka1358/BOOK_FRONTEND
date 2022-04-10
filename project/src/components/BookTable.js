@@ -28,7 +28,12 @@ export default function BookTable() {
 
     return (
     <div className='table-container'>
-        <Table className='mt-5' hover>
+        <Table className='mt-5'
+         hover
+         striped
+         bordered
+         >
+
             <thead>
                 <tr>
                     <th>#</th>

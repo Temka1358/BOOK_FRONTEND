@@ -37,23 +37,23 @@ export default function BookTable() {
                     <th>Price</th>
                     <th>Authors</th>
                     <th>ISBN</th>
-                    <th>Published</th>
+                    <th>Publisher</th>
                     <th>Published On</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                    books.map(book =>
+                    books.map((book, index) =>
                         <tr key={book._id}>
+                            <td>{index}</td>
                             <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
-                            <td>{book.name}</td>
+                            <td>{book.code}</td>
+                            <td>{book.price}</td>
+                            <td>{book.author}</td>
+                            <td>{book.ISBN}</td>
+                            <td>{book.publisher}</td>
+                            <td>{book.pubslished_date}</td>
                             <td><button>a</button></td>
                         </tr>
                         )

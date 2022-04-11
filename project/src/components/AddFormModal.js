@@ -36,6 +36,7 @@ function AddFormModal ({onRender}){
         .finally(()=> setRenderFix(!renderFix))
     }
 
+
     return (
         <>
             <Button className="color" variant="primary" onClick={handleShow}>
@@ -69,8 +70,8 @@ function AddFormModal ({onRender}){
                             <Form.Label for="floatingInput">Author</Form.Label>
                         </Form.Group>
                         <Form.Group  className=" form-floating mb-2">
-                            <Form.Control type="text" id="floatingInput" placeholder="ISBN"  required/>
-                            <Form.Label for="floatingInput">ISBN</Form.Label>
+                            <Form.Control type="text" id="floatingInput" placeholder="ISBN (10 digits)"  required pattern={"d\{10}"}/>
+                            <Form.Label for="floatingInput">ISBN (10 digits)</Form.Label>
                         </Form.Group>
                         <Form.Group className=" form-floating mb-2">
                             <Form.Control type="text" id="floatingInput" placeholder="Publisher"  required/>

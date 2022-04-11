@@ -36,7 +36,7 @@ const delete_book = async (id) => {
         headers: {
             'Content-type': 'application/json'
         },
-        body: JSON.stringify(id)
+        body: JSON.stringify({id:id})
     })
 }
 

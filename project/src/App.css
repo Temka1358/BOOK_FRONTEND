@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.edit svg:hover path{
+  fill: #000 ;
+  fill-opacity: 1;
+  display: inline-block;
+
+}
+
+span div{
+  display: inline;
+}

@@ -1,30 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { bookService }  from '../services/bookService'
-import FormModal from './FormModal'
+import AddFormModal from './AddFormModal'
+import DeleteFormModal from './DeleteFormModal'
+import  EditFormModal  from './EditFormModal'
+
 
 export default function BookTable() {
 
     const [books, setBooks] = useState([])
-
+    const [renderFix,setRenderFix]=useState(false)
 
     useEffect(()=>{
         bookService.get_books()
         .then(response => response.json())
         .then(data => setBooks(data.data))
         .catch(err => alert(err))
-    }, [])
-
-  
-  //Hanlde add book
-    const [addFormVisible,setAddForm] =  useState(false)
-    const handleAddBook=()=>{
-      setAddForm(true)
-    }
-    //close Modal
-    const handleClose = () =>{
-        setAddForm(false)
-    }
+    }, [renderFix])
 
     return (
     <div className='table-container'>
@@ -32,8 +24,9 @@ export default function BookTable() {
          hover
          striped
          bordered
+         size='sm'
+         responsive
          >
-
             <thead>
                 <tr>
                     <th>#</th>
@@ -44,7 +37,7 @@ export default function BookTable() {
                     <th>ISBN</th>
                     <th>Publisher</th>
                     <th>Published On</th>
-                    <th>Actions</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -58,17 +51,22 @@ export default function BookTable() {
                             <td>{book.author}</td>
                             <td>{book.ISBN}</td>
                             <td>{book.publisher}</td>
-                            <td>{book.pubslished_date}</td>
-                            <td><button>a</button></td>
+                            <td>{book.published_date.slice(0,10)}</td>
+                            <td>
+                                <span>
+                                    <EditFormModal data={book} onRender={{renderFix, setRenderFix}} />
+                                </span>
+                                <span >
+                                     <DeleteFormModal data={book._id} onRender={{renderFix, setRenderFix}}/>
+                                </span>
+                            </td>
                         </tr>
-                        )
+                    )
                 }
             </tbody>
         </Table>
 
-        <Button onClick={handleAddBook} > <span className='font-weight-bold'>+</span> Add book</Button>
-
-        <FormModal visible={addFormVisible}  handleClose ={handleClose}/>
+        <AddFormModal onRender={{renderFix, setRenderFix}}/>
 
     </div>
   )
